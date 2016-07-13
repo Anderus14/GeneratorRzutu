@@ -15,8 +15,8 @@ namespace GeneratorRzutu
         private void Roll_Click(object sender, RoutedEventArgs e)
         {           
             var k100 = K100.Text == "" ? 0 : int.Parse(K100.Text);
-            var wh40k_rnd = new Random();
-            var number=wh40k_rnd.Next(1, 101);
+            var wh40KRnd = new Random();
+            var number=wh40KRnd.Next(1, 101);
             var newline = Environment.NewLine;
             if (k100 >= number)
             {
