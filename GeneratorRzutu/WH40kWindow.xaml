@@ -3,11 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:generatorRzutu="clr-namespace:GeneratorRzutu"
         mc:Ignorable="d"
         Title="WH 40k" Height="180" Width="229" Topmost="True" 
         WindowStartupLocation="Manual" Top="100" Left="265">
 
     <Grid>
+        <Grid.Resources>
+            <generatorRzutu:EnumBooleanConverter x:Key="enumBooleanConverter" />
+        </Grid.Resources>
         <RadioButton x:Name="Without" GroupName="Co ile" Content="bez" HorizontalAlignment="Left" Margin="146,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <RadioButton x:Name="Every10" GroupName="Co ile" Content="co 10" HorizontalAlignment="Left" Margin="146,30,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="Every20" GroupName="Co ile" Content="co 20" HorizontalAlignment="Left" Margin="146,50,0,0" VerticalAlignment="Top"/>

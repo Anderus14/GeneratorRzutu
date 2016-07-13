@@ -55,16 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="EnumMatchToBooleanConverter.xaml.cs">
-      <DependentUpon>EnumMatchToBooleanConverter.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="EnumBooleanConverter.cs" />
     <Compile Include="WH40kWindow.xaml.cs">
       <DependentUpon>WH40kWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="EnumMatchToBooleanConverter.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
