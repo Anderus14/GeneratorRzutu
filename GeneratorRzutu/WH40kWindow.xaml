@@ -12,12 +12,12 @@
         <Grid.Resources>
             <generatorRzutu:EnumBooleanConverter x:Key="EnumBooleanConverter"/>
         </Grid.Resources>
-        <RadioButton x:Name="Without" GroupName="Co ile" Content="bez" HorizontalAlignment="Left" Margin="146,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <RadioButton x:Name="Every10" GroupName="Co ile" Content="co 10" HorizontalAlignment="Left" Margin="146,30,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="Every20" GroupName="Co ile" Content="co 20" HorizontalAlignment="Left" Margin="146,50,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="K100" HorizontalAlignment="Left" Height="23" Margin="25,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" KeyDown="K100_KeyDown" PreviewGotKeyboardFocus="K100_PreviewGotKeyboardFocus"/>
+        <RadioButton x:Name="Without" GroupName="Co ile" Content="bez" HorizontalAlignment="Left" Margin="155,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name="Every10" GroupName="Co ile" Content="co 10" HorizontalAlignment="Left" Margin="155,30,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Every20" GroupName="Co ile" Content="co 20" HorizontalAlignment="Left" Margin="155,50,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="K100" HorizontalAlignment="Left" Height="23" Margin="25,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45" KeyDown="K100_KeyDown" PreviewGotKeyboardFocus="K100_PreviewGotKeyboardFocus"/>
         <Button x:Name="Roll" Content="Rzucaj" HorizontalAlignment="Left" Margin="15,115,0,0" VerticalAlignment="Top" Width="75" Click="Roll_Click" IsDefault="True"/>
         <TextBlock x:Name="NumberOfSuccesses" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="55" Width="131" FontSize="20"/>
-        <Label x:Name="Parameter" HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top" Content="Statystyka" Height="25"/>
+        <Label x:Name="Parameter" HorizontalAlignment="Left" Margin="18,64,0,0" VerticalAlignment="Top" Content="Statystyka" Height="25"/>
     </Grid>
 </Window>
