@@ -1,0 +1,18 @@
+﻿<Window x:Class="GeneratorRzutu.Wh40KWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="WH 40k" Height="180" Width="229" Topmost="True" 
+        WindowStartupLocation="Manual" Top="100" Left="265">
+
+    <Grid>
+        <RadioButton x:Name="Without" GroupName="Co ile" Content="bez" HorizontalAlignment="Left" Margin="146,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name="Every10" GroupName="Co ile" Content="co 10" HorizontalAlignment="Left" Margin="146,30,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Every20" GroupName="Co ile" Content="co 20" HorizontalAlignment="Left" Margin="146,50,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="K100" HorizontalAlignment="Left" Height="23" Margin="25,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" KeyDown="K100_KeyDown" PreviewGotKeyboardFocus="K100_PreviewGotKeyboardFocus"/>
+        <Button x:Name="Roll" Content="Rzucaj" HorizontalAlignment="Left" Margin="15,112,0,0" VerticalAlignment="Top" Width="75" Click="Roll_Click" IsDefault="True"/>
+        <TextBlock x:Name="NumberOfSuccesses" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="55" Width="131" FontSize="20"/>
+    </Grid>
+</Window>
