@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.Resources>
-            <generatorRzutu:EnumBooleanConverter x:Key="enumBooleanConverter" />
+            <generatorRzutu:EnumBooleanConverter x:Key="EnumBooleanConverter"/>
         </Grid.Resources>
         <RadioButton x:Name="Without" GroupName="Co ile" Content="bez" HorizontalAlignment="Left" Margin="146,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <RadioButton x:Name="Every10" GroupName="Co ile" Content="co 10" HorizontalAlignment="Left" Margin="146,30,0,0" VerticalAlignment="Top"/>
