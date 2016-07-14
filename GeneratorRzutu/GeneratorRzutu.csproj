@@ -56,6 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EnumBooleanConverter.cs" />
+    <Compile Include="RollOrMultiply.xaml.cs">
+      <DependentUpon>RollOrMultiply.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WH40kWindow.xaml.cs">
       <DependentUpon>WH40kWindow.xaml</DependentUpon>
     </Compile>
@@ -67,6 +70,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RollOrMultiply.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WH40kWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,6 +110,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
