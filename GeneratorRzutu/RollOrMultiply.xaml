@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="" Height="150" Width="300" Topmost="True">
+        Title="" Height="150" Width="300" Topmost="True"
+        WindowStartupLocation="Manual" Top="100" Left="495">
     <Grid>
         <Button x:Name="MultiplyBy2" Content="Wynik razy 2" HorizontalAlignment="Left" Margin="35,50,0,0" VerticalAlignment="Top" Width="75" Click="MultiplyBy2_Click"/>
         <Button x:Name="RollAgain" Content="Rzut" HorizontalAlignment="Left" Margin="175,50,0,0" VerticalAlignment="Top" Width="75" Click="RollAgain_Click"/>

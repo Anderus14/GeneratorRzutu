@@ -12,6 +12,8 @@ namespace GeneratorRzutu
         public Wh40KWindow()
         {
             InitializeComponent();
+            var rollOrMultiply = new RollOrMultiply();
+            rollOrMultiply.Show();
         }
         private void Roll_Click(object sender, RoutedEventArgs e)
         {           
