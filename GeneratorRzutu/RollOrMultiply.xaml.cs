@@ -8,5 +8,15 @@ namespace GeneratorRzutu.Windows
         {
             InitializeComponent();
         }
+
+        private void MultiplyBy2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RollAgain_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
