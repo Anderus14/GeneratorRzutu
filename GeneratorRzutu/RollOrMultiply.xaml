@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="" Height="150" Width="300" Topmost="True"
+        Title="DMG" Height="150" Width="300" Topmost="True"
         WindowStartupLocation="Manual" Top="100" Left="495">
     <Grid>
-        <Button x:Name="MultiplyBy2" Content="Wynik razy 2" HorizontalAlignment="Left" Margin="35,50,0,0" VerticalAlignment="Top" Width="75" Click="MultiplyBy2_Click"/>
-        <Button x:Name="RollAgain" Content="Rzut" HorizontalAlignment="Left" Margin="175,50,0,0" VerticalAlignment="Top" Width="75" Click="RollAgain_Click"/>
+        <Button x:Name="DMGRoll" Content="Rzucaj" HorizontalAlignment="Left" Margin="26,83,0,0" VerticalAlignment="Top" Width="75" Click="DMGRoll_Click"/>
+        <TextBox x:Name="DiceNumber" HorizontalAlignment="Left" Height="23" Margin="233,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27"/>
+        <Label x:Name="Label1" Content="Ilość Kości (k10)" HorizontalAlignment="Left" Margin="215,60,0,0" VerticalAlignment="Top" Width="65" HorizontalContentAlignment="Center" FontSize="8"/>
+        <TextBlock x:Name="Result" HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" Text="Wynik rzutu: " VerticalAlignment="Top" Width="116" Height="55"/>
     </Grid>
 </Window>

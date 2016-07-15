@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace GeneratorRzutu.Windows
 {
@@ -8,15 +10,18 @@ namespace GeneratorRzutu.Windows
         {
             InitializeComponent();
         }
-
-        private void MultiplyBy2_Click(object sender, RoutedEventArgs e)
+        private void DMGRoll_Click(object sender, RoutedEventArgs e)
         {
-             
-        }
-
-        private void RollAgain_Click(object sender, RoutedEventArgs e)
-        {
-
+            var rnd = new Random();
+            var rndDMG = 0;
+            var diceNumber = int.Parse(DiceNumber.Text);
+            var rndDMG2 = rndDMG;
+            for (var i = 0; i < diceNumber; i++)
+            {
+                rndDMG = rnd.Next(1, 10);
+                rndDMG2 = rndDMG + rndDMG2;
+            }
+            Result.Text = rndDMG2.ToString();
         }
     }
 }

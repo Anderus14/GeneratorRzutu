@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:generatorRzutu="clr-namespace:GeneratorRzutu"
         mc:Ignorable="d"
-        Title="WH 40k" Height="180" Width="229" Topmost="True" 
+        Title="WH40k" Height="180" Width="229" Topmost="True" 
         WindowStartupLocation="Manual" Top="100" Left="265">
 
     <Grid>
