@@ -16,7 +16,7 @@ namespace GeneratorRzutu
         {
             InitializeComponent();
             DataContext = this;
-            Title = "Okno";
+            Title = "Okno";          
         }
 
         private void DiceRoll_Click(object sender, RoutedEventArgs e)

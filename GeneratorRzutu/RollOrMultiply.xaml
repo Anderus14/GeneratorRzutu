@@ -4,12 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="DMG" Height="150" Width="300" Topmost="True"
+        Title="DMG" Height="150" Width="344.667" Topmost="True"
         WindowStartupLocation="Manual" Top="100" Left="495">
     <Grid>
-        <Button x:Name="DMGRoll" Content="Rzucaj" HorizontalAlignment="Left" Margin="26,83,0,0" VerticalAlignment="Top" Width="75" Click="DMGRoll_Click"/>
-        <TextBox x:Name="DiceNumber" HorizontalAlignment="Left" Height="23" Margin="233,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27"/>
-        <Label x:Name="Label1" Content="Ilość Kości (k10)" HorizontalAlignment="Left" Margin="215,60,0,0" VerticalAlignment="Top" Width="65" HorizontalContentAlignment="Center" FontSize="8"/>
-        <TextBlock x:Name="Result" HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" Text="Wynik rzutu: " VerticalAlignment="Top" Width="116" Height="55"/>
+        <Button x:Name="DMGRoll" Content="Rzucaj" HorizontalAlignment="Left" Margin="17,83,0,0" VerticalAlignment="Top" Width="75" Click="DMGRoll_Click"/>
+        <TextBox x:Name="DiceNumber" HorizontalAlignment="Left" Height="23" Margin="110,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27" KeyDown="DiceNumber_KeyDown"/>
+        <TextBox x:Name="Modifier" HorizontalAlignment="Left" Height="23" Margin="180,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27" KeyDown="DiceNumber_KeyDown"/>
+        <Label x:Name="Label1" Content="Ilość (k10)" HorizontalAlignment="Left" Margin="90,60,0,0" VerticalAlignment="Top" Width="63" HorizontalContentAlignment="Center"/>
+        <Label x:Name="Label2" Content="Modyfikator" HorizontalAlignment="Left" Margin="155,60,0,0" VerticalAlignment="Top" Width="75" HorizontalContentAlignment="Center"/>
+        <TextBlock x:Name="Result" HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Wynik rzutu: " VerticalAlignment="Top" Width="116" Height="45"/>
+        <CheckBox x:Name="Tearing" Content="Tearing" HorizontalAlignment="Left" Margin="230,6,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Toxic" Content="Toxic" HorizontalAlignment="Left" Margin="230,46,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Volitile" Content="Volitile" HorizontalAlignment="Left" Margin="230,66,0,0" VerticalAlignment="Top"/>
+        <StackPanel IsHitTestVisible="True">
+            <StackPanel.Resources>
+                <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            </StackPanel.Resources>
+            <CheckBox x:Name="Proven" Content="Proven" HorizontalAlignment="Left" Margin="230,26,0,0" VerticalAlignment="Top"/>
+            <TextBox 
+                x:Name="ProvenTextbox" HorizontalAlignment="Left" Height="23" Margin="146,-15,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="27"
+                Visibility="{Binding ElementName=Proven, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" KeyDown="ProvenCheckbox_KeyDown"/>
+            <Label x:Name="ProvenTextBoxLabel" HorizontalAlignment="Left" Margin="136,-46,0,0" VerticalAlignment="Top" Content="wartość" Visibility="{Binding ElementName=Proven, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" IsEnabled="True"/>
+        </StackPanel>
     </Grid>
 </Window>

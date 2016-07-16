@@ -15,7 +15,7 @@ namespace GeneratorRzutu
             var rollOrMultiply = new RollOrMultiply();
             rollOrMultiply.Show();
         }
-        private void Roll_Click(object sender, RoutedEventArgs e)
+        private void WH40KRoll_Click(object sender, RoutedEventArgs e)
         {           
             var k100 = K100.Text == "" ? 0 : int.Parse(K100.Text);
             var wh40KRnd = new Random();
