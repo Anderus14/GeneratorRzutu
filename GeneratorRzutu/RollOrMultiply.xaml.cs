@@ -27,16 +27,29 @@ namespace GeneratorRzutu.Windows
                 if (Tearing.IsChecked.Value)
                 {
                     rndTearing = rnd.Next(1, 11);
+                    var leastValue = Math.Min(rndTearing, Math.Min(rndDMG, rndDMG2));
+                    rndDMG2 = rndDMG2 - leastValue;
                 }
                 if (Proven.IsChecked.Value)
                 {
                     var ChosenValue = int.Parse(ProvenTextbox.Text);
                     
-                }                             
+                }
+                if (Toxic.IsChecked.Value)
+                {
+                    
+                }
+                if (Volitile.IsChecked.Value)
+                {
+                    if (rndDMG == 9 || rndDMG == 10)
+                    {
+                        rndDMG2 = rnd.Next(1, 11);
+                    }
+                }                          
             }
             var modifier = int.Parse(Modifier.Text);
-            var leastValue = Math.Min(rndTearing, Math.Min(rndDMG, rndDMG2));
-            rndDMG2 = rndDMG + rndDMG2 + rndTearing - leastValue + modifier;
+            
+            rndDMG2 = rndDMG + rndDMG2 + rndTearing + modifier;
             Result.Text = rndDMG2.ToString();
         }
 
