@@ -24,36 +24,38 @@ namespace GeneratorRzutu.Windows
                 {
                     rndDMG2 = rnd.Next(1 ,11);
                 }
-                if (Tearing.IsChecked.Value)
+                if (Tearing.IsChecked != null && Tearing.IsChecked.Value)
                 {
                     rndTearing = rnd.Next(1, 11);
                     var leastValue = Math.Min(rndTearing, Math.Min(rndDMG, rndDMG2));
                     rndDMG2 = rndDMG2 - leastValue;
                 }
-                if (Proven.IsChecked.Value)
+                if (Proven.IsChecked != null && Proven.IsChecked.Value)
                 {
-                    var ChosenValue = int.Parse(ProvenTextbox.Text);
+                    var chosenValue = int.Parse(ProvenTextbox.Text);
+                    if (chosenValue < rndDMG || chosenValue < rndDMG2)
+                    {
+                        rndDMG = (chosenValue < rndDMG) ? rnd.Next(1, 11) : rndDMG;
+                        rndDMG2 = (chosenValue < rndDMG2) ? rnd.Next(1, 11) : rndDMG2;
+                    }                   
+                }
+                if (Toxic.IsChecked != null && Toxic.IsChecked.Value)
+                {
                     
                 }
-                if (Toxic.IsChecked.Value)
+                if (Volitile.IsChecked != null && Volitile.IsChecked.Value)
                 {
-                    
-                }
-                if (Volitile.IsChecked.Value)
-                {
-                    if (rndDMG == 9 || rndDMG == 10)
+                    if (rndDMG == 9 && rndDMG == 10)
                     {
                         rndDMG2 = rnd.Next(1, 11);
                     }
                 }                          
             }
-            var modifier = int.Parse(Modifier.Text);
-            
+            var modifier = int.Parse(Modifier.Text);            
             rndDMG2 = rndDMG + rndDMG2 + rndTearing + modifier;
-            Result.Text = rndDMG2.ToString();
+            Result.Text ="Wynik rzutu: " + rndDMG2;
         }
-
-        private void DiceNumber_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void DiceNumber_KeyDown(object sender, KeyEventArgs e)
         {
             if (!char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)) & e.Key != Key.Back & e.Key != Key.Tab &
                 e.Key != Key.Enter)
@@ -61,11 +63,18 @@ namespace GeneratorRzutu.Windows
                 e.Handled = true;
             }
         }
-
         private void ProvenCheckbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (!char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)) & e.Key != Key.Back & e.Key != Key.Tab &
                 e.Key != Key.Enter)
+            {
+                e.Handled = true;
+            }
+        }
+        private void Modificator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)) & e.Key != Key.Back & e.Key != Key.Tab &
+               e.Key != Key.Enter)
             {
                 e.Handled = true;
             }

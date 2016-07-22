@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="DMGRoll" Content="Rzucaj" HorizontalAlignment="Left" Margin="17,83,0,0" VerticalAlignment="Top" Width="75" Click="DMGRoll_Click"/>
         <TextBox x:Name="DiceNumber" HorizontalAlignment="Left" Height="23" Margin="110,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27" KeyDown="DiceNumber_KeyDown"/>
-        <TextBox x:Name="Modifier" HorizontalAlignment="Left" Height="23" Margin="180,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27" KeyDown="DiceNumber_KeyDown"/>
+        <TextBox x:Name="Modifier" HorizontalAlignment="Left" Height="23" Margin="180,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27" KeyDown="Modificator_KeyDown"/>
         <Label x:Name="Label1" Content="Ilość (k10)" HorizontalAlignment="Left" Margin="90,60,0,0" VerticalAlignment="Top" Width="63" HorizontalContentAlignment="Center"/>
         <Label x:Name="Label2" Content="Modyfikator" HorizontalAlignment="Left" Margin="155,60,0,0" VerticalAlignment="Top" Width="75" HorizontalContentAlignment="Center"/>
         <TextBlock x:Name="Result" HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Wynik rzutu: " VerticalAlignment="Top" Width="116" Height="45"/>
