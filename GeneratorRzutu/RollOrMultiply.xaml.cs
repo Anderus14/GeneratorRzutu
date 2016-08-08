@@ -32,7 +32,7 @@ namespace GeneratorRzutu.Windows
                 }
                 if (Proven.IsChecked != null && Proven.IsChecked.Value)
                 {
-                    var chosenValue = int.Parse(ProvenTextbox.Text);
+                    var chosenValue = ProvenTextbox.Text == "" ? 0 : int.Parse(ProvenTextbox.Text);
                     if (chosenValue < rndDMG || chosenValue < rndDMG2)
                     {
                         rndDMG = (chosenValue < rndDMG) ? rnd.Next(1, 11) : rndDMG;

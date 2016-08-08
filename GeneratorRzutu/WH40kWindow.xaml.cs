@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using GeneratorRzutu.Windows;
 
 
 namespace GeneratorRzutu
@@ -18,8 +17,8 @@ namespace GeneratorRzutu
         private void WH40KRoll_Click(object sender, RoutedEventArgs e)
         {           
             var k100 = K100.Text == "" ? 0 : int.Parse(K100.Text);
-            var wh40KRnd = new Random();
-            var number=wh40KRnd.Next(1, 101);
+            var rnd = new Random();
+            var number=rnd.Next(1, 101);
             var newline = Environment.NewLine;
             if (k100 >= number)
             {
