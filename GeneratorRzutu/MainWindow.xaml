@@ -7,12 +7,12 @@
         Title="{Binding Title}" Height="315" Width="235" Topmost="True" 
         WindowStartupLocation="Manual" Top="100" Left="30">
     <Grid>
-        <Menu x:Name="Menu" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="155">
+        <Menu x:Name="Menu" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="160">
             <MenuItem Header="Zapisz" x:Name="Save" Click="Save_Click"/>
             <MenuItem Header="Wczytaj" x:Name="Load" Click="Load_Click"/>
-            <MenuItem Header="WH40k" x:Name="Wh40K" Click="Wh40K_OnClick"/>
+            <MenuItem Header="WH40k" x:Name="Wh40K" Click="Wh40K_OnClick" Width="52"/>
         </Menu>
-        <TextBox x:Name="WindowName" Height="23" Margin="160,0,0,0" TextWrapping="Wrap" Text="Nazwa" VerticalAlignment="Top" TextChanged="WindowName_TextChanged" HorizontalAlignment="Left" Width="47" GotFocus="WindowName_GotFocus" PreviewGotKeyboardFocus="WindowName_PreviewGotKeyboardFocus"/>
+        <TextBox x:Name="WindowName" Height="23" Margin="165,0,0,0" TextWrapping="Wrap" Text="Nazwa" VerticalAlignment="Top" TextChanged="WindowName_TextChanged" HorizontalAlignment="Left" Width="47" GotFocus="WindowName_GotFocus" PreviewGotKeyboardFocus="WindowName_PreviewGotKeyboardFocus"/>
         <TextBox x:Name="DiceNumber" HorizontalAlignment="Left" Height="23" Margin="12,55,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="DiceNumber_KeyDown" PreviewGotKeyboardFocus="DiceNumber_PreviewGotKeyboardFocus" />
         <TextBox x:Name="DiceDimension"  HorizontalAlignment="Left" Height="23" Margin="12,106,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="DiceDimension_KeyDown" PreviewGotKeyboardFocus="DiceDimension_PreviewGotKeyboardFocus"  />
         <TextBox x:Name="Multiplier" HorizontalAlignment="Left" Height="23" Margin="12,155,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="Multiplier_KeyDown" PreviewGotKeyboardFocus="Multiplier_PreviewGotKeyboardFocus" />
