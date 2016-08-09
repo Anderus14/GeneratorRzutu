@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace GeneratorRzutu.Windows
+namespace GeneratorRzutu
 {
     public partial class RollOrMultiply
     {
@@ -16,7 +16,9 @@ namespace GeneratorRzutu.Windows
             var rndDMG = 0;
             var diceNumber = int.Parse(DiceNumber.Text);
             var rndDMG2 = rndDMG;
-            var rndTearing = 0;                     
+            var rndTearing = 0;
+            var toxicDMG = 0;
+            var modifier = int.Parse(Modifier.Text);
             for (var i = 0; i < diceNumber; i++)
             {
                 rndDMG = rnd.Next(1, 11);                
@@ -28,31 +30,31 @@ namespace GeneratorRzutu.Windows
                 {
                     rndTearing = rnd.Next(1, 11);
                     var leastValue = Math.Min(rndTearing, Math.Min(rndDMG, rndDMG2));
-                    rndDMG2 = rndDMG2 - leastValue;
+                    rndDMG2 = rndDMG2 - leastValue + modifier;
                 }
                 if (Proven.IsChecked != null && Proven.IsChecked.Value)
                 {
                     var chosenValue = ProvenTextbox.Text == "" ? 0 : int.Parse(ProvenTextbox.Text);
                     if (chosenValue < rndDMG || chosenValue < rndDMG2)
                     {
-                        rndDMG = (chosenValue < rndDMG) ? rnd.Next(1, 11) : rndDMG;
-                        rndDMG2 = (chosenValue < rndDMG2) ? rnd.Next(1, 11) : rndDMG2;
+                        rndDMG = ((chosenValue < rndDMG) ? rnd.Next(1, 11) : rndDMG) + modifier;
+                        rndDMG2 = ((chosenValue < rndDMG2) ? rnd.Next(1, 11) : rndDMG2) + modifier;
                     }                   
                 }
                 if (Toxic.IsChecked != null && Toxic.IsChecked.Value)
                 {
-                    
+                    toxicDMG = ToxicTextbox.Text == "" ? 0 : int.Parse(ToxicTextbox.Text);
                 }
                 if (Volitile.IsChecked != null && Volitile.IsChecked.Value)
                 {
                     if (rndDMG == 9 && rndDMG == 10)
                     {
-                        rndDMG2 = rnd.Next(1, 11);
+                        rndDMG2 = rnd.Next(1, 11) + modifier;
                     }
                 }                          
             }
-            var modifier = int.Parse(Modifier.Text);            
-            rndDMG2 = rndDMG + rndDMG2 + rndTearing + modifier;
+                      
+            rndDMG2 = rndDMG + rndDMG2 + rndTearing + toxicDMG;
             Result.Text ="Wynik rzutu: " + rndDMG2;
         }
         private void DiceNumber_KeyDown(object sender, KeyEventArgs e)
@@ -63,7 +65,7 @@ namespace GeneratorRzutu.Windows
                 e.Handled = true;
             }
         }
-        private void ProvenCheckbox_KeyDown(object sender, KeyEventArgs e)
+        private void ProvenTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (!char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)) & e.Key != Key.Back & e.Key != Key.Tab &
                 e.Key != Key.Enter)
@@ -72,6 +74,15 @@ namespace GeneratorRzutu.Windows
             }
         }
         private void Modificator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)) & e.Key != Key.Back & e.Key != Key.Tab &
+               e.Key != Key.Enter)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ToxicTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (!char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)) & e.Key != Key.Back & e.Key != Key.Tab &
                e.Key != Key.Enter)
