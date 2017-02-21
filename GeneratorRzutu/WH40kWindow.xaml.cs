@@ -31,42 +31,42 @@ namespace GeneratorRzutu
                 var finalResult20 = (result + rest20) / 20;
                 if (Without.IsChecked != null && Without.IsChecked.Value)
                 {
-                    NumberOfSuccesses.Text = "1 sukces" + newline + "Twój rzut to " + number;
+                    NumberOfSuccesses.Text = $"1 sukces {newline}Twój rzut to {number}";
                 }                                
                 if (Every10.IsChecked != null && Every10.IsChecked.Value && finalResult10 != 0)
                 {
                     if (finalResult10 >= 5)
                     {
-                        NumberOfSuccesses.Text = (finalResult10).ToString() + " sukcesów" + newline + "Twój rzut to " + number;
+                        NumberOfSuccesses.Text = (finalResult10).ToString() + $" sukcesów {newline}Twój rzut to {number}";
                     }
                     else if (finalResult10 == 1)
                     {
-                        NumberOfSuccesses.Text = "1 sukces" + newline + "Twój rzut to " + number;
+                        NumberOfSuccesses.Text = $"1 sukces + {newline}Twój rzut to {number}";
                     }
                     else
                     {
-                        NumberOfSuccesses.Text = (finalResult10).ToString() + " sukcesy" + newline + "Twój rzut to " + number;
+                        NumberOfSuccesses.Text = (finalResult10).ToString() + $" sukcesy {newline}Twój rzut to {number}";
                     }                  
                 }
                 if (Every20.IsChecked != null && Every20.IsChecked.Value && finalResult20 != 0)
                 {
                     if (finalResult20 >= 5)
                     {
-                        NumberOfSuccesses.Text = (finalResult20).ToString() + " sukcesów" + newline + "Twój rzut to " + number;
+                        NumberOfSuccesses.Text = (finalResult20).ToString() + $" sukcesów {newline}Twój rzut to {number}";
                     }
                     else if (finalResult20 == 1)
                     {
-                        NumberOfSuccesses.Text ="1 sukces" + newline + "Twój rzut to " + number;
+                        NumberOfSuccesses.Text =$"1 sukces {newline}Twój rzut to {number}";
                     }
                     else
                     {
-                        NumberOfSuccesses.Text = (finalResult20).ToString() + " sukcesy" + newline + "Twój rzut to " + number;
+                        NumberOfSuccesses.Text = (finalResult20).ToString() + $" sukcesy{newline}Twój rzut to {number}";
                     }
                 }
             }
             else
             {
-                NumberOfSuccesses.Text = "Brak sukcesów" + newline + "Twój rzut to " + number;
+                NumberOfSuccesses.Text = $"Brak sukcesów {newline}Twój rzut to {number}";
             }
         }
 
