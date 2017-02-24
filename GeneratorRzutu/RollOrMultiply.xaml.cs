@@ -54,7 +54,7 @@ namespace GeneratorRzutu
                 }                          
             }           
             rndDMG2 = rndDMG + rndDMG2 + rndTearing + toxicDMG;
-            Result.Text ="Wynik rzutu: " + rndDMG2;
+            Result.Text =$"Wynik rzutu: {rndDMG2}";
         }
         private void DiceNumber_KeyDown(object sender, KeyEventArgs e)
         {
