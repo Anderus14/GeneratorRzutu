@@ -20,7 +20,7 @@
             </StackPanel.Resources>
             <CheckBox x:Name="Toxic" Content="Toxic" HorizontalAlignment="Left" Margin="230,46,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="ToxicTextbox" HorizontalAlignment="Left" Height="23" Margin="146,-15,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="27"
-                Visibility="{Binding ElementName=Toxic, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" KeyDown="ProvenTextbox_KeyDown"/>
+                Visibility="{Binding ElementName=Toxic, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" KeyDown="ProvenTextbox_KeyDown" TextAlignment="Center"/>
             <Label x:Name="ToxicTextBoxLabel" HorizontalAlignment="Left" Margin="130,-40,0,0" VerticalAlignment="Top" Content="wartość Toxic" Visibility="{Binding ElementName=Toxic, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" IsEnabled="True" FontSize="9"/>
         </StackPanel>
         <CheckBox x:Name="Volitile" Content="Volitile" HorizontalAlignment="Left" Margin="230,66,0,0" VerticalAlignment="Top"/>
@@ -31,7 +31,7 @@
             <CheckBox x:Name="Proven" Content="Proven" HorizontalAlignment="Left" Margin="230,26,0,0" VerticalAlignment="Top"/>
             <TextBox 
                 x:Name="ProvenTextbox" HorizontalAlignment="Left" Height="23" Margin="146,-30,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="27"
-                Visibility="{Binding ElementName=Proven, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" KeyDown="ProvenTextbox_KeyDown"/>
+                Visibility="{Binding ElementName=Proven, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" KeyDown="ProvenTextbox_KeyDown" TextAlignment="Center"/>
             <Label x:Name="ProvenTextBoxLabel" HorizontalAlignment="Left" Margin="125,-47,0,0" VerticalAlignment="Top" Content="wartość Proven" Visibility="{Binding ElementName=Proven, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" IsEnabled="True" FontSize="9"/>
         </StackPanel>
     </Grid>
