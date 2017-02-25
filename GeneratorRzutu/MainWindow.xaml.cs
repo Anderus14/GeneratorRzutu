@@ -5,9 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.Win32;
-using GeneratorRzutu;
-using System.ComponentModel;
-using System.Windows.Data;
 
 namespace GeneratorRzutu
 
@@ -20,7 +17,7 @@ namespace GeneratorRzutu
             InitializeComponent();
             DataContext = this;
             Title = "Okno";
-            Loaded += PageLoaded;            
+            Loaded += PageLoaded;
         }
         private void DiceRoll_Click(object sender, RoutedEventArgs e)
         {
@@ -162,7 +159,7 @@ namespace GeneratorRzutu
             DiceNumber.Text = loadedData.ElementAtOrDefault(0);
             DiceDimension.Text = loadedData.ElementAtOrDefault(1);
             Parameter.Text = loadedData.ElementAtOrDefault(2);
-            Multiplier.Text = loadedData.ElementAtOrDefault(3);       
+            Multiplier.Text = loadedData.ElementAtOrDefault(3);
         }
         private void PageLoaded(object sender, RoutedEventArgs e)
         {
@@ -171,7 +168,7 @@ namespace GeneratorRzutu
             foreach (FileInfo file in Files)
             {
                 Profiler.Items.Add(Path.GetFileNameWithoutExtension(file.Name));
-            }
+            }           
         }
     }
 }
