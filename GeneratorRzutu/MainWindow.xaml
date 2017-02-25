@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="315" Width="350" Topmost="True" 
+        Title="{Binding Title}" Height="315" Width="360" Topmost="True" 
         WindowStartupLocation="Manual" Top="100" Left="30">
     <Grid>
         <Menu x:Name="Menu" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="160">
