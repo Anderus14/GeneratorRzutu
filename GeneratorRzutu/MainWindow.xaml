@@ -25,6 +25,6 @@
         <Label x:Name="Labe4" Content="Mnożnik" HorizontalAlignment="Left" Margin="12,129,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="TextBlock" HorizontalAlignment="Left" Margin="100,55,0,100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Height="128" Width="97"/>
         <Label x:Name="Label5" Content="Modyfikator" HorizontalAlignment="Left" Margin="114,183,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="Profiles" HorizontalAlignment="left" Margin="217,28,0,10" Width="115"/>
+        <ListBox x:Name="Profiles" HorizontalAlignment="left" Margin="217,28,0,10" Width="115" SelectionChanged="Profiles_SelectionChanged"/>
     </Grid>
 </Window>
