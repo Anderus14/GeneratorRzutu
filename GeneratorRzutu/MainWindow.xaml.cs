@@ -12,7 +12,6 @@ namespace GeneratorRzutu
 {
     public partial class MainWindow
     {
-        string currentExePath = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
         public MainWindow()
         {
             InitializeComponent();
@@ -22,11 +21,11 @@ namespace GeneratorRzutu
         }
         private void PageLoaded(object sender, RoutedEventArgs e)
         {
-            DirectoryInfo dinfo = new DirectoryInfo($@"{currentExePath}");
+            DirectoryInfo dinfo = new DirectoryInfo(@"C: \Users\Mateusz Malolepszy\Source\Repos\GeneratorRzutu\GeneratorRzutu");
             FileInfo[] Files = dinfo.GetFiles("*.txt");
             foreach (FileInfo file in Files)
             {
-                Profiles.Items.Add(Path.GetFileNameWithoutExtension(file.Name));
+                Profiles.Items.Add(file.Name);
             }                
         }
         private void DiceRoll_Click(object sender, RoutedEventArgs e)
@@ -143,6 +142,7 @@ namespace GeneratorRzutu
                 File.WriteAllLines(saveFileDialog.FileName, savedData);
             }
         }
+
         private void Load_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog {Filter = "Plik tekstowy (*.txt)|*.txt"};
@@ -160,18 +160,6 @@ namespace GeneratorRzutu
         {
             var wh40K = new Wh40KWindow();
             wh40K.Show();
-        }
-
-        private void Profiles_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-            string selectedFile = Profiles.SelectedItem.ToString();
-            string filex = $@"{currentExePath}\{selectedFile}.txt";
-            string[] lines = File.ReadAllLines(filex);
-            DiceNumber.Text = lines.ElementAtOrDefault(0);
-            DiceDimension.Text = lines.ElementAtOrDefault(1);
-            Parameter.Text = lines.ElementAtOrDefault(2);
-            Multiplier.Text = lines.ElementAtOrDefault(3);
         }
     }
 }
