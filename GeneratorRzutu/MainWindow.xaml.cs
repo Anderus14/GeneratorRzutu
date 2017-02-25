@@ -6,6 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.Win32;
 using GeneratorRzutu;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace GeneratorRzutu
 
@@ -18,16 +20,7 @@ namespace GeneratorRzutu
             InitializeComponent();
             DataContext = this;
             Title = "Okno";
-            Loaded += PageLoaded;
-        }
-        private void PageLoaded(object sender, RoutedEventArgs e)
-        {
-            DirectoryInfo dinfo = new DirectoryInfo($@"{currentExePath}");
-            FileInfo[] Files = dinfo.GetFiles("*.txt");
-            foreach (FileInfo file in Files)
-            {
-                Profiles.Items.Add(Path.GetFileNameWithoutExtension(file.Name));
-            }                
+            Loaded += PageLoaded;            
         }
         private void DiceRoll_Click(object sender, RoutedEventArgs e)
         {
@@ -161,15 +154,24 @@ namespace GeneratorRzutu
             var wh40K = new Wh40KWindow();
             wh40K.Show();
         }
-        private void Profiles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Profiler_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string selectedFile = Profiles.SelectedItem.ToString();
+            string selectedFile = Profiler.SelectedItem.ToString();
             string filex = $@"{currentExePath}\{selectedFile}.txt";
             string[] loadedData = File.ReadAllLines(filex);
             DiceNumber.Text = loadedData.ElementAtOrDefault(0);
             DiceDimension.Text = loadedData.ElementAtOrDefault(1);
             Parameter.Text = loadedData.ElementAtOrDefault(2);
-            Multiplier.Text = loadedData.ElementAtOrDefault(3);
+            Multiplier.Text = loadedData.ElementAtOrDefault(3);       
+        }
+        private void PageLoaded(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo dinfo = new DirectoryInfo($@"{currentExePath}");
+            FileInfo[] Files = dinfo.GetFiles("*.txt");
+            foreach (FileInfo file in Files)
+            {
+                Profiler.Items.Add(Path.GetFileNameWithoutExtension(file.Name));
+            }
         }
     }
 }
