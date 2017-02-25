@@ -162,14 +162,14 @@ namespace GeneratorRzutu
             wh40K.Show();
         }
         private void Profiles_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {           
+        {
             string selectedFile = Profiles.SelectedItem.ToString();
             string filex = $@"{currentExePath}\{selectedFile}.txt";
-            string[] lines = File.ReadAllLines(filex);
-            DiceNumber.Text = lines.ElementAtOrDefault(0);
-            DiceDimension.Text = lines.ElementAtOrDefault(1);
-            Parameter.Text = lines.ElementAtOrDefault(2);
-            Multiplier.Text = lines.ElementAtOrDefault(3);
+            string[] loadedData = File.ReadAllLines(filex);
+            DiceNumber.Text = loadedData.ElementAtOrDefault(0);
+            DiceDimension.Text = loadedData.ElementAtOrDefault(1);
+            Parameter.Text = loadedData.ElementAtOrDefault(2);
+            Multiplier.Text = loadedData.ElementAtOrDefault(3);
         }
     }
 }
