@@ -5,20 +5,20 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.Win32;
-using GeneratorRzutu;
 
 namespace GeneratorRzutu
 
 {
     public partial class MainWindow
     {
+        string currentExePath = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
-            Title = "Okno";          
+            Title = "Okno";
+            Loaded += PageLoaded;
         }
-
         private void DiceRoll_Click(object sender, RoutedEventArgs e)
         {
             var rnd = new Random();
@@ -133,7 +133,6 @@ namespace GeneratorRzutu
                 File.WriteAllLines(saveFileDialog.FileName, savedData);
             }
         }
-
         private void Load_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog {Filter = "Plik tekstowy (*.txt)|*.txt"};
@@ -151,6 +150,25 @@ namespace GeneratorRzutu
         {
             var wh40K = new Wh40KWindow();
             wh40K.Show();
+        }
+        private void Profiler_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedFile = Profiler.SelectedItem.ToString();
+            string filex = $@"{currentExePath}\{selectedFile}.txt";
+            string[] loadedData = File.ReadAllLines(filex);
+            DiceNumber.Text = loadedData.ElementAtOrDefault(0);
+            DiceDimension.Text = loadedData.ElementAtOrDefault(1);
+            Parameter.Text = loadedData.ElementAtOrDefault(2);
+            Multiplier.Text = loadedData.ElementAtOrDefault(3);
+        }
+        private void PageLoaded(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo dinfo = new DirectoryInfo($@"{currentExePath}");
+            FileInfo[] Files = dinfo.GetFiles("*.txt");
+            foreach (FileInfo file in Files)
+            {
+                Profiler.Items.Add(Path.GetFileNameWithoutExtension(file.Name));
+            }           
         }
     }
 }
