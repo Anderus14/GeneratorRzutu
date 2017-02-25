@@ -16,9 +16,18 @@ namespace GeneratorRzutu
         {
             InitializeComponent();
             DataContext = this;
-            Title = "Okno";          
+            Title = "Okno";
+            Loaded += PageLoaded;
         }
-
+        private void PageLoaded(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo dinfo = new DirectoryInfo(@"C: \Users\Mateusz Malolepszy\Source\Repos\GeneratorRzutu\GeneratorRzutu");
+            FileInfo[] Files = dinfo.GetFiles("*.txt");
+            foreach (FileInfo file in Files)
+            {
+                Profiles.Items.Add(file.Name);
+            }                
+        }
         private void DiceRoll_Click(object sender, RoutedEventArgs e)
         {
             var rnd = new Random();
