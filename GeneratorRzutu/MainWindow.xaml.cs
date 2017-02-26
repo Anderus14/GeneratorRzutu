@@ -21,7 +21,7 @@ namespace GeneratorRzutu
         }
         private void DiceRoll_Click(object sender, RoutedEventArgs e)
         {
-            var rnd = new Random();
+            Random rnd = new Random();
             var diceNumber = DiceNumber.Text == "" ? 0 : int.Parse(DiceNumber.Text); //ilość kości
             var diceDim = DiceDimension.Text == "" ? 0 : int.Parse(DiceDimension.Text); //typ kości (ile ścian posiada kość)      
             var multiply = Multiplier.Text == "" ? 0 : int.Parse(Multiplier.Text); //mnożnik rzutu
@@ -39,9 +39,31 @@ namespace GeneratorRzutu
                     sum = nums + sum;
                 }
             }
-            ThrowSum.Text = (sum*multiply + parameter).ToString();
+            ThrowSum.Text = (sum * multiply + parameter).ToString();
+            if (customDiceCheckbox.IsChecked != null && customDiceCheckbox.IsChecked.Value)
+            {
+                var startOfSuccessDice = startSuccess.Text == "" ? 0 : int.Parse(startSuccess.Text);
+                var endOfSuccessDice = endSuccesss.Text == "" ? 0 : int.Parse(endSuccesss.Text);
+                var startOfNoSuccessDice = startNoSuccess.Text == "" ? 0 : int.Parse(startNoSuccess.Text);
+                var endOfNoSuccessDice = endNoSuccess.Text == "" ? 0 : int.Parse(endNoSuccess.Text);
+                var startOfFailSuccessDice = startFailSuccess.Text == "" ? 0 : int.Parse(startFailSuccess.Text); 
+                var endOfFailSuccessDice = endFailSuccess.Text == "" ? 0 : int.Parse(endFailSuccess.Text);
+                var randomCustomDice = rnd.Next(startOfSuccessDice, endOfFailSuccessDice);
+                ThrowSum.Text = 0.ToString();
+                if (randomCustomDice>=startOfSuccessDice && randomCustomDice<=endOfSuccessDice)
+                {
+                    TextBlock.Text = nameSuccess.Text+newLine+randomCustomDice.ToString();
+                }
+                if (randomCustomDice >= startOfNoSuccessDice && randomCustomDice <= endOfNoSuccessDice)
+                {
+                    TextBlock.Text = nameNoSuccess.Text + newLine + randomCustomDice.ToString();
+                }
+                if (randomCustomDice >= startOfFailSuccessDice && randomCustomDice <= endOfFailSuccessDice)
+                {
+                    TextBlock.Text = nameFailSuccess.Text+newLine+randomCustomDice.ToString();
+                }
+            }
         }
-
         private void DiceNumber_KeyDown(object sender, KeyEventArgs e)
         {
             if (!char.IsDigit((char) KeyInterop.VirtualKeyFromKey(e.Key)) & e.Key != Key.Back & e.Key != Key.Tab &

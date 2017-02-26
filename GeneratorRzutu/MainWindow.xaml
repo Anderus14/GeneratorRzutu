@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="315" Width="360" Topmost="True" 
+        Title="{Binding Title}" Height="315" Width="454.034" Topmost="True" 
         WindowStartupLocation="Manual" Top="100" Left="30">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Menu x:Name="Menu" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="160">
             <MenuItem Header="Zapisz" x:Name="Save" Click="Save_Click"/>
             <MenuItem Header="Wczytaj" x:Name="Load" Click="Load_Click"/>
@@ -15,16 +19,40 @@
         <TextBox x:Name="WindowName" Height="23" Margin="165,0,0,0" TextWrapping="Wrap" Text="Nazwa" VerticalAlignment="Top" TextChanged="WindowName_TextChanged" HorizontalAlignment="Left" Width="47" GotFocus="WindowName_GotFocus" PreviewGotKeyboardFocus="WindowName_PreviewGotKeyboardFocus"/>
         <TextBox x:Name="DiceNumber" HorizontalAlignment="Left" Height="23" Margin="12,55,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="DiceNumber_KeyDown" PreviewGotKeyboardFocus="DiceNumber_PreviewGotKeyboardFocus" />
         <TextBox x:Name="DiceDimension"  HorizontalAlignment="Left" Height="23" Margin="12,106,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="DiceDimension_KeyDown" PreviewGotKeyboardFocus="DiceDimension_PreviewGotKeyboardFocus"  />
-        <TextBox x:Name="Multiplier" HorizontalAlignment="Left" Height="23" Margin="12,155,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="Multiplier_KeyDown" PreviewGotKeyboardFocus="Multiplier_PreviewGotKeyboardFocus" />
-        <TextBox x:Name="Parameter" HorizontalAlignment="Left" Height="23" Margin="129,209,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="Parameter_KeyDown" PreviewGotKeyboardFocus="Parameter_PreviewGotKeyboardFocus" />
-        <TextBox x:Name="ThrowSum" HorizontalAlignment="Left" Height="23" Margin="12,209,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45" TextAlignment="Center" IsReadOnly="True"/>
-        <Button x:Name="Roll" Content="Rzucaj" HorizontalAlignment="Left" Margin="10,246,0,0" VerticalAlignment="Top" Width="64" Click="DiceRoll_Click" IsDefault="True"/>
-        <Label x:Name="Label1" Content="Ilość kości" HorizontalAlignment="Left" Margin="12,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.844,0.692" Height="27"/>
+        <TextBox x:Name="Multiplier" HorizontalAlignment="Left" Height="23" Margin="12,12.866,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="Multiplier_KeyDown" PreviewGotKeyboardFocus="Multiplier_PreviewGotKeyboardFocus" Grid.Row="1" />
+        <TextBox x:Name="Parameter" HorizontalAlignment="Left" Height="23" Margin="129,66.866,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="Parameter_KeyDown" PreviewGotKeyboardFocus="Parameter_PreviewGotKeyboardFocus" Grid.Row="1" />
+        <TextBox x:Name="ThrowSum" HorizontalAlignment="Left" Height="23" Margin="12,66.866,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45" TextAlignment="Center" IsReadOnly="True" Grid.Row="1"/>
+        <Button x:Name="Roll" Content="Rzucaj" HorizontalAlignment="Left" Margin="10,103.866,0,0" VerticalAlignment="Top" Width="64" Click="DiceRoll_Click" IsDefault="True" Grid.Row="1"/>
+        <Label x:Name="Label1" Content="Ilość kości" HorizontalAlignment="Left" Margin="12,28,0,0" VerticalAlignment="Top" Height="27"/>
         <Label x:Name="Label2" Content="Typ kości (k)" HorizontalAlignment="Left" Margin="12,80,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Label3" Content="Suma rzutów" HorizontalAlignment="Left" Margin="12,183,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Labe4" Content="Mnożnik" HorizontalAlignment="Left" Margin="12,129,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Label5" Content="Modyfikator" HorizontalAlignment="Left" Margin="114,183,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="TextBlock" HorizontalAlignment="Left" Margin="100,55,0,100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Height="128" Width="97"/>
-        <ListView x:Name="Profiler" HorizontalAlignment="left" Margin="217,28,0,10" Width="115" SelectionChanged="Profiler_SelectionChanged" />
+        <Label x:Name="Label3" Content="Suma rzutów" HorizontalAlignment="Left" Margin="12,40.866,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Label x:Name="Labe4" Content="Mnożnik" HorizontalAlignment="Left" Margin="12,129,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Label x:Name="Label5" Content="Modyfikator" HorizontalAlignment="Left" Margin="114,40.866,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock x:Name="TextBlock" HorizontalAlignment="Left" Margin="100,56,0,100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Height="128" Width="97" Grid.RowSpan="2"/>
+        <ListView x:Name="Profiler" HorizontalAlignment="left" Margin="217,28,0,10" Width="115" SelectionChanged="Profiler_SelectionChanged" Grid.RowSpan="2" />
+        <DockPanel IsHitTestVisible="True" Grid.RowSpan="2" Margin="337,0,0,0">
+            <DockPanel.Resources>
+                <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            </DockPanel.Resources>
+            <CheckBox x:Name="customDiceCheckbox" Content="Własna kość" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="endSuccesss" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-40,50,0,0"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+            <TextBox x:Name="startSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-80,50,0,0"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+            <TextBox x:Name="nameSuccess" HorizontalAlignment="left" Height="23" Width="63" Text="" VerticalAlignment="Top" Margin="-80,25,0,0"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+            <TextBox x:Name="endNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-40,120,0,0"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+            <TextBox x:Name="startNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-80,120,0,0"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+            <TextBox x:Name="nameNoSuccess" HorizontalAlignment="left" Height="23" Width="63" Text="" VerticalAlignment="Top" Margin="-80,95,0,0"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+            <TextBox x:Name="endFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-40,190,0,0"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+            <TextBox x:Name="startFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-80,190,0,0"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+            <TextBox x:Name="nameFailSuccess" HorizontalAlignment="left" Height="23" Width="63" Text="" VerticalAlignment="Top" Margin="-80,165,0,0"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+        </DockPanel>
     </Grid>
 </Window>
