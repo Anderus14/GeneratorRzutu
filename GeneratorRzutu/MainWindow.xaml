@@ -34,24 +34,24 @@
             <DockPanel.Resources>
                 <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             </DockPanel.Resources>
-            <CheckBox x:Name="customDiceCheckbox" Content="Własna kość" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="endSuccesss" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-40,50,0,0"
+            <CheckBox x:Name="customDiceCheckbox" Content="Własna kość" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <TextBox x:Name="endSuccesss" HorizontalAlignment="left" Height="23" Width="23" Text="do" VerticalAlignment="Top" Margin="-28,50,0,0" GotFocus="WindowName_GotFocus" KeyDown="DiceDimension_KeyDown"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="startSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-80,50,0,0"
+            <TextBox x:Name="startSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="od" VerticalAlignment="Top" Margin="-80,50,0,0" GotFocus="WindowName_GotFocus" KeyDown="DiceDimension_KeyDown"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="nameSuccess" HorizontalAlignment="left" Height="23" Width="63" Text="" VerticalAlignment="Top" Margin="-80,25,0,0"
+            <TextBox x:Name="nameSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="Wpisz nazwę" VerticalAlignment="Top" Margin="-80,25,0,0" GotFocus="WindowName_GotFocus"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="endNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-40,120,0,0"
+            <TextBox x:Name="endNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="do" VerticalAlignment="Top" Margin="-28,120,0,0" GotFocus="WindowName_GotFocus" KeyDown="DiceDimension_KeyDown"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="startNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-80,120,0,0"
+            <TextBox x:Name="startNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="od" VerticalAlignment="Top" Margin="-80,120,0,0" GotFocus="WindowName_GotFocus" KeyDown="DiceDimension_KeyDown"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="nameNoSuccess" HorizontalAlignment="left" Height="23" Width="63" Text="" VerticalAlignment="Top" Margin="-80,95,0,0"
+            <TextBox x:Name="nameNoSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="Wpisz nazwę" VerticalAlignment="Top" Margin="-80,95,0,0" GotFocus="WindowName_GotFocus"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="endFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-40,190,0,0"
+            <TextBox x:Name="endFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="do" VerticalAlignment="Top" Margin="-28,190,0,0" GotFocus="WindowName_GotFocus" KeyDown="DiceDimension_KeyDown"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="startFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="-80,190,0,0"
+            <TextBox x:Name="startFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="od" VerticalAlignment="Top" Margin="-80,190,0,0" GotFocus="WindowName_GotFocus" KeyDown="DiceDimension_KeyDown"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="nameFailSuccess" HorizontalAlignment="left" Height="23" Width="63" Text="" VerticalAlignment="Top" Margin="-80,165,0,0"
+            <TextBox x:Name="nameFailSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="Wpisz nazwę" VerticalAlignment="Top" Margin="-80,165,0,0" GotFocus="WindowName_GotFocus"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
         </DockPanel>
     </Grid>

@@ -52,15 +52,15 @@ namespace GeneratorRzutu
                 ThrowSum.Text = 0.ToString();
                 if (randomCustomDice>=startOfSuccessDice && randomCustomDice<=endOfSuccessDice)
                 {
-                    TextBlock.Text = nameSuccess.Text+newLine+randomCustomDice.ToString();
+                    TextBlock.Text = nameSuccess.Text;
                 }
                 if (randomCustomDice >= startOfNoSuccessDice && randomCustomDice <= endOfNoSuccessDice)
                 {
-                    TextBlock.Text = nameNoSuccess.Text + newLine + randomCustomDice.ToString();
+                    TextBlock.Text = nameNoSuccess.Text;
                 }
                 if (randomCustomDice >= startOfFailSuccessDice && randomCustomDice <= endOfFailSuccessDice)
                 {
-                    TextBlock.Text = nameFailSuccess.Text+newLine+randomCustomDice.ToString();
+                    TextBlock.Text = nameFailSuccess.Text;
                 }
             }
         }
@@ -135,7 +135,6 @@ namespace GeneratorRzutu
             wn.Text = string.Empty;
             wn.GotFocus -= WindowName_GotFocus;
         }
-
         private void WindowName_PreviewGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             if (e.KeyboardDevice.IsKeyDown(Key.Tab))
