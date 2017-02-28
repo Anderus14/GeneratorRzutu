@@ -29,7 +29,7 @@ namespace GeneratorRzutu
                 var multiply = Multiplier.Text == "" ? 0 : int.Parse(Multiplier.Text); //mnożnik rzutu
                 var parameter = Parameter.Text == "" ? 0 : int.Parse(Parameter.Text); //współczynnik dodawany do sumy
                 var newLine = Environment.NewLine; //nowa linia w textBlock
-                var nums = rnd.Next(1, diceDim + 1);
+                var nums = rnd.Next(1, diceDim);
                 var sum = nums;
                 if (TextBlock != null)
                 {
@@ -51,7 +51,7 @@ namespace GeneratorRzutu
                     var startOfFailSuccessDice = startFailSuccess.Text == "" ? 0 : int.Parse(startFailSuccess.Text);
                     var endOfFailSuccessDice = endFailSuccess.Text == "" ? 0 : int.Parse(endFailSuccess.Text);
                     var randomCustomDice = rnd.Next(startOfSuccessDice, endOfFailSuccessDice);
-                    ThrowSum.Text = 0.ToString();
+                    ThrowSum.Text = null;
                     if (TextBlock != null)
                     {
                         for (var i = 1; i <= diceNumber; i++)
@@ -61,6 +61,7 @@ namespace GeneratorRzutu
                             if (randomCustomDice >= startOfSuccessDice && randomCustomDice <= endOfSuccessDice)
                             {
                                 TextBlock.Text = nameSuccess.Text;
+                                
                             }
                             if (randomCustomDice >= startOfNoSuccessDice && randomCustomDice <= endOfNoSuccessDice)
                             {
@@ -69,7 +70,7 @@ namespace GeneratorRzutu
                             if (randomCustomDice >= startOfFailSuccessDice && randomCustomDice <= endOfFailSuccessDice)
                             {
                                 TextBlock.Text = nameFailSuccess.Text;
-                            }                           
+                            }
                         }
                     }
                 }
