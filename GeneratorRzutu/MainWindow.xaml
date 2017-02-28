@@ -16,7 +16,30 @@
             <MenuItem Header="Wczytaj" x:Name="Load" Click="Load_Click"/>
             <MenuItem Header="WH40k" x:Name="Wh40K" Click="Wh40K_OnClick" Width="52"/>
         </Menu>
-        <TextBox x:Name="WindowName" Height="23" Margin="165,0,0,0" TextWrapping="Wrap" Text="Nazwa" VerticalAlignment="Top" TextChanged="WindowName_TextChanged" HorizontalAlignment="Left" Width="47" GotFocus="WindowName_GotFocus" PreviewGotKeyboardFocus="WindowName_PreviewGotKeyboardFocus"/>
+        <TextBox x:Name="WindowName" Height="23" Margin="165,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="WindowName_TextChanged" HorizontalAlignment="Left" Width="47" PreviewGotKeyboardFocus="WindowName_PreviewGotKeyboardFocus">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Nazwa" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
         <TextBox x:Name="DiceNumber" HorizontalAlignment="Left" Height="23" Margin="12,55,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="Correct_KeyDown" PreviewGotKeyboardFocus="WindowName_PreviewGotKeyboardFocus" />
         <TextBox x:Name="DiceDimension"  HorizontalAlignment="Left" Height="23" Margin="12,106,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="Correct_KeyDown" PreviewGotKeyboardFocus="WindowName_PreviewGotKeyboardFocus"/>
         <TextBox x:Name="Multiplier" HorizontalAlignment="Left" Height="23" Margin="12,12.866,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="45" TextAlignment="Center" KeyDown="Correct_KeyDown" PreviewGotKeyboardFocus="WindowName_PreviewGotKeyboardFocus" Grid.Row="1"/>
@@ -34,25 +57,232 @@
             <DockPanel.Resources>
                 <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             </DockPanel.Resources>
-            <CheckBox x:Name="customDiceCheckbox" Content="Własna kość" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top" Checked="CheckBoxChecked" Unchecked="CheckBoxUnchecked"/>
-            <TextBox x:Name="nameSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="Wpisz nazwę" VerticalAlignment="Top" Margin="-80,25,0,0" GotFocus="WindowName_GotFocus"
-                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="startSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="od" VerticalAlignment="Top" Margin="-80,50,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
-                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="endSuccesss" HorizontalAlignment="left" Height="23" Width="23" Text="do" VerticalAlignment="Top" Margin="-28,50,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
-                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="nameNoSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="Wpisz nazwę" VerticalAlignment="Top" Margin="-80,95,0,0" GotFocus="WindowName_GotFocus"
-                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="startNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="od" VerticalAlignment="Top" Margin="-80,120,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
-                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="endNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="do" VerticalAlignment="Top" Margin="-28,120,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"                    
-                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="nameFailSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="Wpisz nazwę" VerticalAlignment="Top" Margin="-80,165,0,0" GotFocus="WindowName_GotFocus"
-                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="startFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="od" VerticalAlignment="Top" Margin="-80,190,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
-                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
-            <TextBox x:Name="endFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="do" VerticalAlignment="Top" Margin="-28,190,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
-                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
+            <CheckBox x:Name="customDiceCheckbox" Content="Własna kość" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="nameSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="" VerticalAlignment="Top" Margin="-80,25,0,0" GotFocus="WindowName_GotFocus"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Wpisz nazwę" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="startSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="" VerticalAlignment="Top" Margin="-80,50,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Od" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="endSuccesss" HorizontalAlignment="left" Height="23" Width="23" Text="" VerticalAlignment="Top" Margin="-28,50,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Do" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="nameNoSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="" VerticalAlignment="Top" Margin="-80,95,0,0" GotFocus="WindowName_GotFocus"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Wpisz nazwę" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="startNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="" VerticalAlignment="Top" Margin="-80,120,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Od" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="endNoSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="" VerticalAlignment="Top" Margin="-28,120,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"                    
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Do" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="nameFailSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="" VerticalAlignment="Top" Margin="-80,165,0,0" GotFocus="WindowName_GotFocus"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Wpisz nazwę" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="startFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="" VerticalAlignment="Top" Margin="-80,190,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Od" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="endFailSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="" VerticalAlignment="Top" Margin="-28,190,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"
+                     Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Do" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
         </DockPanel>
     </Grid>
 </Window>
