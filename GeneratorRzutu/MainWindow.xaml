@@ -51,7 +51,7 @@
         <Label x:Name="Label3" Content="Suma rzutów" HorizontalAlignment="Left" Margin="12,40.866,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <Label x:Name="Labe4" Content="Mnożnik" HorizontalAlignment="Left" Margin="12,129,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <Label x:Name="Label5" Content="Modyfikator" HorizontalAlignment="Left" Margin="114,40.866,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBlock x:Name="TextBlock" HorizontalAlignment="Left" Margin="100,56,0,100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Height="128" Width="97" Grid.RowSpan="2"/>
+        <TextBlock x:Name="TextBlock" HorizontalAlignment="Left" Margin="100,44,0,100" TextWrapping="Wrap" Text="" VerticalAlignment="Center" TextAlignment="Center" Height="140" Width="97" Grid.RowSpan="2"/>
         <ListView x:Name="Profiler" HorizontalAlignment="left" Margin="217,28,0,10" Width="115" SelectionChanged="Profiler_SelectionChanged" Grid.RowSpan="2" />
         <DockPanel IsHitTestVisible="True" Grid.RowSpan="2" Margin="337,0,0,0">
             <DockPanel.Resources>
