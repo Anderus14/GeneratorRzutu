@@ -34,7 +34,7 @@
             <DockPanel.Resources>
                 <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             </DockPanel.Resources>
-            <CheckBox x:Name="customDiceCheckbox" Content="Własna kość" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <CheckBox x:Name="customDiceCheckbox" Content="Własna kość" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top" Checked="CheckBoxChecked" Unchecked="CheckBoxUnchecked"/>
             <TextBox x:Name="nameSuccess" HorizontalAlignment="left" Height="23" Width="75" Text="Wpisz nazwę" VerticalAlignment="Top" Margin="-80,25,0,0" GotFocus="WindowName_GotFocus"
                      Visibility="{Binding ElementName=customDiceCheckbox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center"/>
             <TextBox x:Name="startSuccess" HorizontalAlignment="left" Height="23" Width="23" Text="od" VerticalAlignment="Top" Margin="-80,50,0,0" GotFocus="WindowName_GotFocus" KeyDown="Correct_KeyDown"

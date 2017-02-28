@@ -21,68 +21,8 @@ namespace GeneratorRzutu
         }
         private void DiceRoll_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Random rnd = new Random();
-                var diceNumber = DiceNumber.Text == "" ? 0 : int.Parse(DiceNumber.Text); //ilość kości
-                var diceDim = DiceDimension.Text == "" ? 0 : int.Parse(DiceDimension.Text); //typ kości (ile ścian posiada kość)      
-                var multiply = Multiplier.Text == "" ? 0 : int.Parse(Multiplier.Text); //mnożnik rzutu
-                var parameter = Parameter.Text == "" ? 0 : int.Parse(Parameter.Text); //współczynnik dodawany do sumy
-                var newLine = Environment.NewLine; //nowa linia w textBlock
-                var nums = rnd.Next(1, diceDim);
-                var sum = nums;
-                if (TextBlock != null)
-                {
-                    TextBlock.Text = nums.ToString();
-                    for (var i = 1; i < diceNumber; i++)
-                    {
-                        nums = rnd.Next(1, diceDim + 1);
-                        TextBlock.Text = TextBlock.Text + newLine + nums;
-                        sum = nums + sum;
-                    }
-                }
-                ThrowSum.Text = (sum * multiply + parameter).ToString();
-                if (customDiceCheckbox.IsChecked != null && customDiceCheckbox.IsChecked.Value)
-                {
-                    var startOfSuccessDice = startSuccess.Text == "" ? 0 : int.Parse(startSuccess.Text);
-                    var endOfSuccessDice = endSuccesss.Text == "" ? 0 : int.Parse(endSuccesss.Text);
-                    var startOfNoSuccessDice = startNoSuccess.Text == "" ? 0 : int.Parse(startNoSuccess.Text);
-                    var endOfNoSuccessDice = endNoSuccess.Text == "" ? 0 : int.Parse(endNoSuccess.Text);
-                    var startOfFailSuccessDice = startFailSuccess.Text == "" ? 0 : int.Parse(startFailSuccess.Text);
-                    var endOfFailSuccessDice = endFailSuccess.Text == "" ? 0 : int.Parse(endFailSuccess.Text);
-                    var randomCustomDice = rnd.Next(startOfSuccessDice, endOfFailSuccessDice);
-                    ThrowSum.Text = null;
-                    if (TextBlock != null)
-                    {
-                        for (var i = 1; i <= diceNumber; i++)
-                        {
-                            randomCustomDice = rnd.Next(startOfSuccessDice, endOfFailSuccessDice);
-                            TextBlock.Text = TextBlock.Text + newLine;
-                            if (randomCustomDice >= startOfSuccessDice && randomCustomDice <= endOfSuccessDice)
-                            {
-                                TextBlock.Text = nameSuccess.Text;
-                                
-                            }
-                            if (randomCustomDice >= startOfNoSuccessDice && randomCustomDice <= endOfNoSuccessDice)
-                            {
-                                TextBlock.Text = nameNoSuccess.Text;
-                            }
-                            if (randomCustomDice >= startOfFailSuccessDice && randomCustomDice <= endOfFailSuccessDice)
-                            {
-                                TextBlock.Text = nameFailSuccess.Text;
-                            }
-                        }
-                    }
-                }
-            }
-            catch(FormatException)
-            {
-                if (nameSuccess.Text == "Wpisz nazwę" || nameSuccess == null || nameNoSuccess.Text == "Wpisz nazwę" || 
-                    nameNoSuccess == null || nameFailSuccess.Text == "Wpisz nazwę" || nameFailSuccess == null)
-                {
-                    MessageBox.Show("Ty Luju! Wpisz tekst, który ma się wyświetlić!");
-                }
-            }           
+                CheckBoxChecked(sender, e);
+                CheckBoxUnchecked(sender, e);                               
         }
         private void Correct_KeyDown(object sender, KeyEventArgs e)
         {
@@ -166,6 +106,77 @@ namespace GeneratorRzutu
             {
                 Profiler.Items.Add(Path.GetFileNameWithoutExtension(file.Name));
             }           
+        }
+        public void CheckBoxChecked(object sender, EventArgs e)
+        {
+           try
+            {
+                if (customDiceCheckbox.IsChecked != null && customDiceCheckbox.IsChecked.Value)
+                {
+                    Random rnd = new Random();
+                    var diceNumber = DiceNumber.Text == "" ? 0 : int.Parse(DiceNumber.Text); //ilość kości
+                    var newLine = Environment.NewLine; //nowa linia w textBlock
+                    var startOfSuccessDice = startSuccess.Text == "" ? 0 : int.Parse(startSuccess.Text);
+                    var endOfSuccessDice = endSuccesss.Text == "" ? 0 : int.Parse(endSuccesss.Text);
+                    var startOfNoSuccessDice = startNoSuccess.Text == "" ? 0 : int.Parse(startNoSuccess.Text);
+                    var endOfNoSuccessDice = endNoSuccess.Text == "" ? 0 : int.Parse(endNoSuccess.Text);
+                    var startOfFailSuccessDice = startFailSuccess.Text == "" ? 0 : int.Parse(startFailSuccess.Text);
+                    var endOfFailSuccessDice = endFailSuccess.Text == "" ? 0 : int.Parse(endFailSuccess.Text);
+                    var randomCustomDice = rnd.Next(startOfSuccessDice, endOfFailSuccessDice);
+                    ThrowSum.Text = null;
+                    if (TextBlock != null)
+                    {
+                        var text = "";
+                        for (var i = 1; i <= diceNumber; i++)
+                        {
+                            randomCustomDice = rnd.Next(startOfSuccessDice, endOfFailSuccessDice);
+                            if (randomCustomDice >= startOfSuccessDice && randomCustomDice <= endOfSuccessDice)
+                            {
+                                text = nameSuccess.Text;
+                            }
+                            if (randomCustomDice >= startOfNoSuccessDice && randomCustomDice <= endOfNoSuccessDice)
+                            {
+                                text = nameNoSuccess.Text;
+                            }
+                            if (randomCustomDice >= startOfFailSuccessDice && randomCustomDice <= endOfFailSuccessDice)
+                            {
+                                text = nameFailSuccess.Text;
+                            }
+                            TextBlock.Text += text + newLine;
+                        }                        
+                    }
+                }
+            }
+            catch
+            {
+                if (nameSuccess.Text == "Wpisz nazwę" || nameSuccess == null || nameNoSuccess.Text == "Wpisz nazwę" ||
+                        nameNoSuccess == null || nameFailSuccess.Text == "Wpisz nazwę" || nameFailSuccess == null)
+                {
+                    MessageBox.Show("Ty Luju! Wpisz tekst, który ma się wyświetlić!");
+                }
+            }
+        }
+         public void CheckBoxUnchecked(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            var diceNumber = DiceNumber.Text == "" ? 0 : int.Parse(DiceNumber.Text); //ilość kości
+            var diceDim = DiceDimension.Text == "" ? 0 : int.Parse(DiceDimension.Text); //typ kości (ile ścian posiada kość)      
+            var multiply = Multiplier.Text == "" ? 0 : int.Parse(Multiplier.Text); //mnożnik rzutu
+            var parameter = Parameter.Text == "" ? 0 : int.Parse(Parameter.Text); //współczynnik dodawany do sumy
+            var newLine = Environment.NewLine; //nowa linia w textBlock
+            var nums = rnd.Next(1, diceDim);
+            var sum = nums;
+            if (TextBlock != null)
+            {
+                TextBlock.Text = nums.ToString();
+                for (var i = 1; i < diceNumber; i++)
+                {
+                    nums = rnd.Next(1, diceDim + 1);
+                    TextBlock.Text = TextBlock.Text + newLine + nums;
+                    sum = nums + sum;
+                }
+            }
+            ThrowSum.Text = (sum * multiply + parameter).ToString();
         }
     }
 }
